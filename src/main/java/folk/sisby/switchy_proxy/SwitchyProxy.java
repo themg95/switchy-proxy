@@ -7,6 +7,7 @@ import folk.sisby.switchy.api.presets.SwitchyPreset;
 import folk.sisby.switchy.api.presets.SwitchyPresets;
 import folk.sisby.switchy.modules.DrogtorModule;
 import folk.sisby.switchy.modules.StyledNicknamesModule;
+import folk.sisby.switchy.util.Feedback;
 import folk.sisby.switchy_proxy.modules.ProxyModule;
 import folk.sisby.switchy_proxy.modules.ProxyModuleConfig;
 import net.minecraft.scoreboard.Team;
