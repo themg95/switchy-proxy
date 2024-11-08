@@ -1,17 +1,17 @@
 [versions]
-loom = "1.4.+"
+loom = "1.7.+"
 githubRelease = "2.4.1"
-minotaur = "2.6.0"
+minotaur = "2.+"
 
-mc = "1.20.4"
-fl = "0.15.2"
-yarn = "1.20.4+build.3"
-fapi = "0.91.3+1.20.4"
+mc = "1.21"
+fl = "0.15.11"
+yarn = "1.21+build.9"
+fapi = "0.101.2+1.21"
 
-switchy = "2.9.0+1.20.4"
+switchy = "2.9.5+1.21"
 
-placeholder = "2.3.0+1.20.3"
-styledChat = "2.4.0+1.20.3"
+placeholder = "2.4.1+1.21"
+styledChat = "2.6.0+1.21"
 
 [plugins]
 loom = { id = "fabric-loom", version.ref = "loom" }
