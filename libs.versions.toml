@@ -1,14 +1,14 @@
 [versions]
-loom = "1.4.+"
+loom = "1.7.+"
 githubRelease = "2.4.1"
-minotaur = "2.6.0"
+minotaur = "2.+"
 
 mc = "1.20.1"
-fl = "0.15.1"
+fl = "0.15.0"
 yarn = "1.20.1+build.10"
 fapi = "0.87.0+1.20.1"
 
-switchy = "2.9.0+1.20"
+switchy = "2.9.5+1.20"
 
 placeholder = "2.1.1+1.20"
 styledChat = "2.2.3+1.20.1"
