@@ -1,6 +1,7 @@
 package folk.sisby.switchy_proxy.modules;
 
 import folk.sisby.switchy.api.SwitchySerializable;
+import folk.sisby.switchy.util.Feedback;
 import folk.sisby.switchy_proxy.ProxyTag;
 import folk.sisby.switchy_proxy.SwitchyProxy;
 import net.minecraft.nbt.NbtCompound;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProxyModuleData implements SwitchySerializable {
-	public static final Identifier ID = new Identifier(SwitchyProxy.ID, "proxies");
+	public static final Identifier ID = Feedback.identifier(SwitchyProxy.ID, "proxies");
 
 	public static final String KEY_TAG_LIST = "tags";
 
