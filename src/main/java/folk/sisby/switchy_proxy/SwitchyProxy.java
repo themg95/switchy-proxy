@@ -23,8 +23,8 @@ import java.util.Map;
 public class SwitchyProxy implements SwitchyEvents.Init {
 	public static final String ID = "switchy_proxy";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
-	public static final Identifier PHASE_ARGS = new Identifier(ID, "set_args");
-	public static final Identifier PHASE_CLEAR = new Identifier(ID, "clear");
+	public static final Identifier PHASE_ARGS = Feedback.identifier(ID, "set_args");
+	public static final Identifier PHASE_CLEAR = Feedback.identifier(ID, "clear");
 
 	public static @Nullable Text decorateDisplayName(MutableText text, SwitchyProxyPlayer spp) {
 		if (text != null && spp instanceof ServerPlayerEntity spe) {
