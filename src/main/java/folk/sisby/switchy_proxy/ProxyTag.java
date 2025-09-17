@@ -24,8 +24,8 @@ public record ProxyTag(String prefix, String suffix) {
 	}
 
 	public static ProxyTag fromNbt(NbtCompound nbt) {
-		String prefix = nbt.getString(KEY_PREFIX);
-		String suffix = nbt.getString(KEY_SUFFIX);
+		String prefix = nbt.getString(KEY_PREFIX, "");
+		String suffix = nbt.getString(KEY_SUFFIX, "");
 		return new ProxyTag(prefix, suffix);
 	}
 

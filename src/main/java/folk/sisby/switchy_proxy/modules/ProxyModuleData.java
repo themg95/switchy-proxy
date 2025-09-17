@@ -45,7 +45,7 @@ public class ProxyModuleData implements SwitchySerializable {
 	@Override
 	public void fillFromNbt(NbtCompound nbt) {
 		this.tags.clear();
-		nbt.getList(KEY_TAG_LIST, NbtElement.COMPOUND_TYPE).forEach((e) -> {
+		nbt.getList(KEY_TAG_LIST).orElseGet(NbtList::new).forEach((e) -> {
 			if (e instanceof NbtCompound c) tags.put(ProxyTag.fromNbt(c).toString(), ProxyTag.fromNbt(c));
 		});
 	}

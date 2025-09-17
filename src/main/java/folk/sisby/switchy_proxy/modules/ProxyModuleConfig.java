@@ -17,7 +17,7 @@ public class ProxyModuleConfig implements SwitchySerializable {
 
 	@Override
 	public void fillFromNbt(NbtCompound nbt) {
-		latchEnabled = nbt.getBoolean(KEY_LATCH);
+		latchEnabled = nbt.getBoolean(KEY_LATCH, false);
 	}
 
 	public boolean isLatchEnabled() {

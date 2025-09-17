@@ -1,17 +1,20 @@
 [versions]
-loom = "1.7.+"
+loom = "1.10.+"
 githubRelease = "2.4.1"
 minotaur = "2.+"
 
-mc = "1.21"
+mc = "1.21.5"
 fl = "0.15.11"
-yarn = "1.21+build.9"
-fapi = "0.101.2+1.21"
+yarn = "1.21.5+build.1"
+fapi = "0.128.2+1.21.5"
 
-switchy = "2.9.5+1.21"
+switchy = "2.9.11+1.21"
 
-placeholder = "2.4.1+1.21"
-styledChat = "2.6.0+1.21"
+placeholder = "2.6.4+1.21.5"
+styledChat = "2.8.0+1.21.5"
+playerData = "0.7.0+1.21.5"
+permissionsApi = "0.3.3"
+predicate = "0.6.0+1.21.2"
 
 [plugins]
 loom = { id = "fabric-loom", version.ref = "loom" }
@@ -31,3 +34,6 @@ switchyCompat = { group = "folk.sisby", name = "switchy-compat", version.ref = "
 
 placeholder = { group = "eu.pb4", name = "placeholder-api", version.ref = "placeholder" }
 styledChat = { group = "maven.modrinth", name = "styled-chat", version.ref = "styledChat" }
+playerData = { group = "eu.pb4", name = "player-data-api", version.ref = "playerData" }
+permissionsApi = { group = "me.lucko", name = "fabric-permissions-api", version.ref = "permissionsApi" }
+predicate = { group = "eu.pb4", name = "predicate-api", version.ref = "predicate" }
