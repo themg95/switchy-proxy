@@ -4,6 +4,7 @@ import eu.pb4.styledchat.StyledChatEvents;
 import eu.pb4.styledchat.ducks.ExtSignedMessage;
 import folk.sisby.switchy.api.SwitchyEvents;
 import folk.sisby.switchy.api.SwitchyPlayer;
+import folk.sisby.switchy.api.exception.ModuleNotFoundException;
 import folk.sisby.switchy.api.presets.SwitchyPreset;
 import folk.sisby.switchy.api.presets.SwitchyPresets;
 import folk.sisby.switchy.modules.StyledNicknamesModule;
@@ -31,6 +32,8 @@ public class SwitchyProxy implements SwitchyEvents.Init {
 	public static final Identifier PHASE_CLEAR = Feedback.identifier(ID, "clear");
 	public static final String ARG_CONTENT = "proxy_content";
 	public static final String ARG_DISPLAY_NAME = "proxy_display_name";
+	private static final Identifier PRONOUNS_MODULE = Identifier.of("switchy", "player_pronouns");
+	private static final Identifier NICKNAMES_MODULE = Identifier.of("switchy", "styled_nicknames");
 
 	public static @Nullable Text decorateDisplayName(MutableText text, SwitchyProxyPlayer spp) {
 		if (text != null && spp instanceof ServerPlayerEntity spe) {
@@ -91,6 +94,40 @@ public class SwitchyProxy implements SwitchyEvents.Init {
 		if (sender instanceof SwitchyProxyPlayer spp) {
 			spp.switchy_proxy$setMatchedPreset(null);
 			spp.switchy_proxy$setProxiedContent(null);
+
+			afterMessage(sender);
+		}
+	}
+
+	public static void beforeMessage(String content, ServerPlayerEntity sender) {
+		proxyContent(content, sender);
+
+		if (sender instanceof SwitchyProxyPlayer spp) {
+			SwitchyPresets presets = ((SwitchyPlayer) sender).switchy$getPresets();
+			SwitchyPreset newPreset = spp.switchy_proxy$getMatchedPreset() != null ? spp.switchy_proxy$getMatchedPreset() : (presets.getModuleConfig(ProxyModule.ID, ProxyModuleConfig.class).isLatchEnabled() ? spp.switchy_proxy$getLatchedPreset() : null);
+			if (newPreset != null) {
+				SwitchyPreset oldPreset = presets.getCurrentPreset();
+				oldPreset.updateFromPlayer(sender, null);
+				try {
+					if (presets.isModuleEnabled(NICKNAMES_MODULE))
+						newPreset.getModule(NICKNAMES_MODULE).applyToPlayer(sender);
+				} catch (ModuleNotFoundException ignored) {
+				}
+				try {
+					if (presets.isModuleEnabled(PRONOUNS_MODULE))
+						newPreset.getModule(PRONOUNS_MODULE).applyToPlayer(sender);
+				} catch (ModuleNotFoundException ignored) {
+				}
+			}
+		}
+	}
+
+	public static void afterMessage(ServerPlayerEntity sender) {
+		if (sender instanceof SwitchyProxyPlayer) {
+			SwitchyPreset oldPreset = ((SwitchyPlayer) sender).switchy$getPresets().getCurrentPreset();
+
+			oldPreset.getModule(NICKNAMES_MODULE).applyToPlayer(sender);
+			oldPreset.getModule(PRONOUNS_MODULE).applyToPlayer(sender);
 		}
 	}
 
